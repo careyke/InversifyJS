@@ -27,7 +27,14 @@ function _throwIfMethodParameter(parameterName: string | symbol | undefined): vo
   }
 }
 
-
+/**
+ * KC:构造函数参数修饰器处理入口。建立依赖关系
+ * 分析构造函数依赖的类，并将依赖关系保存起来。
+ * @param annotationTarget 
+ * @param parameterName 
+ * @param parameterIndex 
+ * @param metadata 
+ */
 function tagParameter(
   annotationTarget: DecoratorTarget,
   parameterName: string | symbol | undefined,
@@ -38,6 +45,12 @@ function tagParameter(
   _tagParameterOrProperty(METADATA_KEY.TAGGED, annotationTarget as ConstructorFunction, parameterIndex.toString(), metadata);
 }
 
+/**
+ * KC: 属性修饰器处理入口
+ * @param annotationTarget 
+ * @param propertyName 
+ * @param metadata 
+ */
 function tagProperty(
   annotationTarget: DecoratorTarget,
   propertyName: string | symbol,
@@ -97,7 +110,11 @@ function _tagParameterOrProperty(
 }
 
 
-
+/**
+ * KC: 修饰器处理入口
+ * @param metadata
+ * @returns 
+ */
 function createTaggedDecorator(
   metadata: interfaces.MetadataOrMetadataArray,
 ) {
